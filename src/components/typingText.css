@@ -1,0 +1,19 @@
+.typing-container {
+  font-size: 2rem;
+  font-family: monospace;
+  color: orange;
+  display: inline-block;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1px;
+  animation: blink 0.8s infinite;
+  color: purple;
+}
+
+@keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0; }
+  100% { opacity: 1; }
+}

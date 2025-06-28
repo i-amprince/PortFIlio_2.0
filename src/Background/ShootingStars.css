@@ -1,0 +1,121 @@
+.shooting-stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Stars falling to bottom right */
+.shooting-star {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(0deg, white, transparent);
+  opacity: 0;
+  animation: fall-star linear infinite;
+}
+
+/* Sun ray falling to bottom left */
+.shooting-sun {
+  position: absolute;
+  width: 10px;
+  height: 160px;
+  opacity: 0;
+  animation: fall-sun 2s linear 1;
+
+  background: linear-gradient(
+    to bottom,
+    #ffff00 0%,       /* bright yellow head */
+    #ff9900 20%,       /* orange mid */
+    #ff3300 40%,       /* red-hot mid tail */
+    rgba(255, 80, 0, 0.4) 70%,  /* translucent trail */
+    rgba(255, 0, 0, 0) 100%     /* fully faded end */
+  );
+
+  /* Wide tail using clip-path (starts thin, ends wide) */
+  clip-path: polygon(
+    45% 0%,       /* narrow tip */
+    55% 0%,
+    65% 20%,
+    75% 40%,
+    85% 60%,
+    95% 80%,
+    100% 100%,    /* bottom right */
+    0% 100%,      /* bottom left */
+    5% 80%,
+    15% 60%,
+    25% 40%,
+    35% 20%
+  );
+
+  border-radius: 30% 30% 0 0 / 30% 30% 0 0;
+  filter: blur(0.3px);
+  box-shadow: 0 0 15px rgba(255, 120, 0, 0.5);
+}
+
+
+
+/* Fixed moon at top right */
+.moon {
+  position: absolute;
+  top: 10vh;
+  right: 10vw;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #bbb);
+  box-shadow: 0 0 20px #fff;
+}
+
+/* Animations */
+@keyframes fall-star {
+  0% {
+    transform: translate(0, 0) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(50vw, 100vh) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fall-sun {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(-50vw, 100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+
+.static-star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+

@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+// App.jsx
+import React from 'react';
+import ShootingStar from './Background/ShootingStar';
+import TypingText from './components/typingText';
 import './App.css';
+import Logo from './Images/Group 1.png';
+import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ShootingStar />
+
+      <div className="hero-section">
+        {/* Left content */}
+        <div className="hero-left">
+          <h1 className="hero-name">Prince Goyal</h1>
+          <div className="hero-typing"><TypingText /></div>
+          <button className="about-button">
+            About Me
+            <span className="arrow">→</span>
+          </button>
+        </div>
+
+        {/* Logo */}
+        <div className="Logo">
+          <img src={Logo} alt="Prince Logo" />
+        </div>
+
+        {/* Socials */}
+        <div className="social-links">
+          <a href="https://github.com/i-amprince" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+          <a href="https://www.instagram.com/wydo.prince__/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://www.linkedin.com/in/prince-goyal-9123372b1/" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href="mailto:princeg1608@gmail.com"><FaEnvelope /></a>
+        </div>
+      </div>
     </div>
   );
 }
