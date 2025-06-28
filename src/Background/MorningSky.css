@@ -1,0 +1,229 @@
+.morning-sky-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #C9E6FF 0%,    /* Light morning sky blue */
+    #DFF4FF 20%,   /* Soft frosty white-blue */
+    #91b9cd 40%,   /* Almost white with bluish hue */
+    #488fb3 70%,   /* Gentle blue tone */
+    #30377a 100%   /* Soft sky cyan */
+  );
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Morning Sun */
+.morning-sun {
+  position: absolute;
+  top: 20vh;
+  right: 15vw;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, #FFD700, #FFA500);
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 165, 0, 0.4),
+    0 0 90px rgba(255, 140, 0, 0.2);
+  animation: morning-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes morning-glow {
+  0% {
+    box-shadow: 
+      0 0 30px rgba(255, 215, 0, 0.6),
+      0 0 60px rgba(255, 165, 0, 0.4),
+      0 0 90px rgba(255, 140, 0, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 
+      0 0 40px rgba(255, 215, 0, 0.8),
+      0 0 80px rgba(255, 165, 0, 0.6),
+      0 0 120px rgba(255, 140, 0, 0.3);
+    transform: scale(1.05);
+  }
+}
+
+/* Sun Rays */
+.sun-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  transform: translate(-50%, -50%);
+  animation: rotate-rays 20s linear infinite;
+}
+
+.sun-ray {
+  position: absolute;
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(to bottom, #FFD700, transparent);
+  border-radius: 1px;
+  transform-origin: 1px 100px;
+  opacity: 0.7;
+}
+
+.sun-ray:nth-child(1) { transform: rotate(0deg); }
+.sun-ray:nth-child(2) { transform: rotate(30deg); }
+.sun-ray:nth-child(3) { transform: rotate(60deg); }
+.sun-ray:nth-child(4) { transform: rotate(90deg); }
+.sun-ray:nth-child(5) { transform: rotate(120deg); }
+.sun-ray:nth-child(6) { transform: rotate(150deg); }
+.sun-ray:nth-child(7) { transform: rotate(180deg); }
+.sun-ray:nth-child(8) { transform: rotate(210deg); }
+.sun-ray:nth-child(9) { transform: rotate(240deg); }
+.sun-ray:nth-child(10) { transform: rotate(270deg); }
+.sun-ray:nth-child(11) { transform: rotate(300deg); }
+.sun-ray:nth-child(12) { transform: rotate(330deg); }
+
+@keyframes rotate-rays {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Morning Clouds */
+.morning-cloud {
+  position: absolute;
+  opacity: 0.6;
+  filter: blur(0.5px);
+  z-index: 0;
+}
+
+.morning-cloud svg {
+  width: 100%;
+  height: 100%;
+  fill: rgba(255, 255, 255, 0.8);
+}
+
+.morning-cloud.drift-left {
+  animation: drift-cloud-left linear infinite;
+}
+
+.morning-cloud.drift-right {
+  animation: drift-cloud-right linear infinite;
+}
+
+@keyframes drift-cloud-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-120vw); }
+}
+
+@keyframes drift-cloud-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(120vw); }
+}
+
+/* Morning Mist */
+.morning-mist {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh;
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  animation: mist-flow 8s ease-in-out infinite alternate;
+}
+
+@keyframes mist-flow {
+  0% { opacity: 0.3; }
+  100% { opacity: 0.6; }
+}
+
+/* Butterflies */
+.butterfly {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  z-index: 2;
+  animation: butterfly-fly linear infinite;
+  opacity: 0.8;
+}
+
+.butterfly svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes butterfly-fly {
+  0% {
+    transform: translateX(-5vw) translateY(0);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-20px);
+  }
+  50% {
+    transform: translateX(50vw) translateY(10px);
+  }
+  75% {
+    transform: translateX(75vw) translateY(-15px);
+  }
+  100% {
+    transform: translateX(105vw) translateY(5px);
+  }
+}
+
+/* Floating Flowers */
+.floating-flower {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  z-index: 1;
+  animation: float-flower linear infinite;
+  opacity: 0.7;
+}
+
+.floating-flower svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes float-flower {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Morning Dewdrops */
+.dewdrop {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(135, 206, 235, 0.6));
+  border-radius: 50%;
+  animation: twinkle-dew 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes twinkle-dew {
+  0%, 100% { 
+    opacity: 0.3; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1; 
+    transform: scale(1.2);
+  }
+}
