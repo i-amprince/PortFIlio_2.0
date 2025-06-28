@@ -1,0 +1,84 @@
+.evening-sky-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #FF914D, #FDBE85, #C7F0BD);
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Sun */
+.evening-sun {
+  position: absolute;
+  top: 60vh;
+  left: 45vw;
+  width: 100px;
+  height: 100px;
+  animation: sunset-glow 5s ease-in-out infinite alternate;
+}
+
+@keyframes sunset-glow {
+  0% {
+    filter: drop-shadow(0 0 10px #FF4500);
+  }
+  100% {
+    filter: drop-shadow(0 0 30px #FF6347);
+  }
+}
+
+/* Clouds */
+.evening-cloud {
+  position: absolute;
+  opacity: 0.8;
+  filter: blur(1px);
+  z-index: 0;
+}
+
+.evening-cloud svg {
+  width: 100%;
+  height: 100%;
+}
+
+.evening-cloud.move-left {
+  animation: move-cloud-left linear infinite;
+}
+
+.evening-cloud.move-right {
+  animation: move-cloud-right linear infinite;
+}
+
+@keyframes move-cloud-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-150vw); }
+}
+
+@keyframes move-cloud-right {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(150vw); }
+}
+
+/* Mountains */
+.mountains {
+  position: absolute;
+  bottom: 15vh;
+  left: 0;
+  width: 100vw;
+  height: 35vh;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+/* Field */
+.field {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 15vh;
+  background: linear-gradient(to top, #4CAF50, #8BC34A);
+  z-index: 1;
+}
