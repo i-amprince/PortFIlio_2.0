@@ -1,0 +1,109 @@
+.day-sky-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to bottom, #87CEEB, #B0E0E6);
+  overflow: hidden;
+  z-index: -1;
+}
+
+.day-sun {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #FFD700, #FFA500);
+  box-shadow: 0 0 50px rgba(255, 215, 0, 0.8), 0 0 100px rgba(255, 165, 0, 0.6);
+  opacity: 1;
+  transition: left 3s ease-in-out;
+}
+
+/* Clouds */
+.day-cloud {
+  position: absolute;
+  opacity: 0.9;
+  filter: blur(0.5px);
+  z-index: 0;
+}
+
+.day-cloud svg {
+  width: 100%;
+  height: 100%;
+}
+
+.day-cloud.move-left {
+  animation: move-cloud-left linear infinite;
+}
+
+.day-cloud.move-right {
+  animation: move-cloud-right linear infinite;
+}
+
+@keyframes move-cloud-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-150vw);
+  }
+}
+
+@keyframes move-cloud-right {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150vw);
+  }
+}
+
+/* Hot Air Balloons */
+.hot-air-balloon {
+  position: absolute;
+  bottom: -20vh;
+  z-index: 1;
+  opacity: 1;
+  animation: rise-up linear infinite;
+  transform: translateX(var(--driftX, 0));
+}
+
+.hot-air-balloon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes rise-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-120vh);
+  }
+}
+
+/* Birds */
+.bird {
+  position: absolute;
+  left: -10vw;
+  width: 50px;
+  height: 25px;
+  z-index: 2;
+  animation: bird-fly linear infinite;
+  opacity: 0.9;
+}
+
+.bird svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes bird-fly {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120vw);
+  }
+}
