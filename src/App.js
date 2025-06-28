@@ -5,6 +5,7 @@ import TypingText from './components/typingText';
 import './App.css';
 import Logo from './Images/Group 1.png';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import UFO from './components/UFO';
 
 function App() {
   return (
@@ -22,9 +23,14 @@ function App() {
           </button>
         </div>
 
-        {/* Logo */}
+        {/* Logo and UFO container */}
         <div className="Logo">
           <img src={Logo} alt="Prince Logo" />
+        </div>
+
+        {/* UFO placed separately below logo but before social links */}
+        <div className="UFO-container">
+          <UFO />
         </div>
 
         {/* Socials */}

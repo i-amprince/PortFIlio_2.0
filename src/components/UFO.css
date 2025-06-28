@@ -1,0 +1,23 @@
+.ufo-svg-wrapper {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 100%;
+  height: 100%;
+  animation: float 3s ease-in-out infinite;
+}
+
+.ufo-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 10px #00ffea);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}

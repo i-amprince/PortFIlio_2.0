@@ -1,10 +1,18 @@
+/* Hero Section */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
 .hero-section {
   position: absolute;
   top: 20%;
   left: 5%;
   right: 5%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: flex-start;
   z-index: 10;
   color: white;
@@ -12,6 +20,7 @@
   gap: 40px; /* spacing between text and logo */
 }
 
+/* Left text content */
 .hero-left {
   max-width: 50%;
 }
@@ -66,10 +75,13 @@
   left: 0;
 }
 
+/* Logo */
 .Logo {
   width: 28vw;
   max-width: 350px;
   height: auto;
+  position: relative;
+  top: -10px;
 }
 
 .Logo img {
@@ -78,10 +90,62 @@
   object-fit: contain;
 }
 
+/* UFO container with enter/exit animation */
+.UFO-container {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 10;
+  animation: ufoVanishLoop 8s ease-in-out infinite;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* UFO SVG styling */
+.UFO-container svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 12px #00ffea);
+}
+
+/* Keyframes for vanish then reappear from below */
+@keyframes ufoVanishLoop {
+  0% {
+    transform: translate(60vw, 50vh) scale(1);
+    opacity: 1;
+  }
+
+  20% {
+    transform: translate(60vw, 30vh) scale(0.3);
+    opacity: 0.6;
+  }
+
+  30% {
+    transform: translate(60vw, 0vh) scale(0);
+    opacity: 0;
+  }
+
+  45% {
+    transform: translate(60vw, 120vh) scale(1.2);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translate(60vw, 50vh) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(60vw, 50vh) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Social media icons */
 .social-links {
   position: fixed;
   top: 30%;
-  right: 20px; /* spacing from right edge */
+  right: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -97,18 +161,3 @@
 .social-links a:hover {
   color: #00bfff;
 }
-
-.ufo-icon {
-  width: 80px;
-  height: auto;
-  margin-top: 20px;
-  margin-left: 10px;
-  filter: drop-shadow(0 0 10px #ffb347);
-  animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
