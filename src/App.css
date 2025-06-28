@@ -1,9 +1,14 @@
+/* Prevent scroll only for App (landing/hero) */
+.app-no-scroll {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 /* Hero Section */
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 
 .hero-section {
@@ -92,7 +97,7 @@ body, html {
 
 /* UFO container with enter/exit animation */
 .UFO-container {
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 200px;
   z-index: 10;

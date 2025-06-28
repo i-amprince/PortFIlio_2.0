@@ -9,7 +9,7 @@ import UFO from './components/UFO';
 
 function App() {
   return (
-    <div>
+    <div className="app-no-scroll">
       <ShootingStar />
 
       <div className="hero-section">

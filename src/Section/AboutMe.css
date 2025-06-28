@@ -5,22 +5,21 @@
     padding: 0;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
 .about-container {
     width: 100%;
-    /* Changed to height: auto to allow content to dictate height,
-       but min-height: 100vh ensures it takes at least full viewport height if content is short. */
-    min-height: 100vh;
+    height: 100vh;
+    min-height: unset;
     display: flex;
-    align-items: center; /* Keeps card centered vertically if content is short */
+    align-items: center;
     justify-content: center;
-    /* Reduced padding: 32px top, 0 right, 32px bottom, 0 left */
-    padding: 32px 0 32px 0;
+    padding: 0;
     position: relative;
     z-index: 5;
-    /* Removed overflow-y: auto here. It's usually better to have scroll on specific elements if needed,
-       or manage overall page scroll. If the container itself needs to scroll, keep it,
-       but often the parent of this container handles page scroll. */
-    /* overflow-y: auto; */
 }
 
 .about-card {
