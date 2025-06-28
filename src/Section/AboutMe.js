@@ -1,7 +1,6 @@
 import React from 'react';
 import './AboutMe.css';
 
-// Import placeholder images (replace with actual paths)
 import WorkingImage from '../Images/workingg.png';
 import MongoDBLogo from '../Images/Logos/M.svg';
 import ExpressLogo from '../Images/Logos/E.svg';
@@ -16,21 +15,15 @@ const AboutMe = () => {
         <div className="about-content-wrapper">
           <div className="about-text-content">
             <p className="about-description">
-              A passionate second-year student diving deep into web development. I've recently enhanced my skills by mastering the MERN stack (MongoDB, Express.js, React.js, Node.js) and have been actively building projects. I'm eager to create dynamic and user-centric web applications.
+              I'm a <strong style={{ color: '#00ffcc' }}>MERN Stack Developer</strong> and problem-solver passionate about building full-stack applications that are both functional and intuitive. I’ve been working extensively with the MERN stack — creating responsive, user-centric interfaces and scalable backend solutions.
             </p>
-            <p className="about-description skills-intro">
-              Technologies and tools I use to craft exceptional web solutions:
+            <p className="about-description">
+              Alongside development, I'm actively strengthening my foundations in Data Structures and Algorithms. With a <strong style={{ color: '#00BFFF' }}>LeetCode rating of 1700+</strong> and a <strong style={{ color: '#FFD700' }}>CodeChef 2⭐</strong> profile, I enjoy tackling algorithmic challenges that sharpen my logic and coding efficiency.
             </p>
-            <div className="tag-grid">
-              {[
-                "JavaScript", "React.js", "React Context API", "Node.js", "Express.js", "MongoDB", "Mongoose",
-                "HTML", "CSS", "Tailwind CSS", "Figma",
-                "Git", "GitHub", "Terminal",
-                "Java", "Python", "C", "C++"
-              ].map((tag, i) => (
-                <span key={i} className="tag">{tag}</span>
-              ))}
-            </div>
+            <p className="about-description">
+              I believe in learning by doing — whether it's building real-world projects, collaborating with others, or diving deep into new technologies. I'm currently focused on refining my development workflow, writing clean, maintainable code, and contributing to impactful software solutions.
+            </p>
+
             <div className="mern-section">
               <h3>MERN Stack</h3>
               <div className="mern-logos-row">
