@@ -2,38 +2,58 @@ import React from 'react';
 import ShootingStars from '../Background/ShootingStar';
 import './Project.css';
 import laptop from '../Images/Laptop/Laptopp.png';
+import UFOHeader from '../components/UFOHeader';
 
 import IMG1 from '../Images/ProjectImages/Project1.png';
 import IMG2 from '../Images/ProjectImages/Project2.png';
 import IMG3 from '../Images/ProjectImages/Project3.png';
 import IMG4 from '../Images/ProjectImages/Project4.png';
 import IMG5 from '../Images/ProjectImages/Project5.png';
+import IMG6 from '../Images/ProjectImages/Project6.png';
+import IMG7 from '../Images/ProjectImages/Project7.png';
 
 const projects = [
+    {
+        title: 'Personal Portfolio',
+        description: 'A visually dynamic React-based portfolio website featuring animated backgrounds, interactive sections, and a showcase of my skills and projects.',
+        image: IMG7,
+        link: 'https://github.com/i-amprince/PortFIlio_2.0',
+    },
   {
-    title: 'Personal Portfolio',
-    description: 'React-based personal portfolio showcasing skills and projects with dynamic sections.',
+    title: 'Cadence Code',
+    description: 'A collaborative code editor built with React, supporting real-time editing and syntax highlighting for multiple users.',
     image: IMG1,
-    link: '#',
+    link: 'https://github.com/i-amprince/CadenceCode',
   },
   {
-    title: 'Weather App',
-    description: 'Weather forecast application using OpenWeatherMap API with elegant UI.',
+    title: 'Chitzy',
+    description: 'An interesting Chatting Application with modern and Clean UI, to interact with others with fun.',
     image: IMG2,
-    link: '#',
+    link: 'https://github.com/i-amprince/Chitzy',
   },
   {
-    title: 'Chat Application',
-    description: 'Real-time chat app with Socket.io and Node.js backend.',
-    image: IMG3,
-    link: '#',
-  },
-  {
-    title: "Any App",
-    description: 'Just Something Amazing.',
+    title: 'AI Agent trained for Lunar Lander Game',
+    description: 'A reinforcement learning project where an AI agent is trained to master the classic Lunar Lander game using PSO algorithm and RL.',
     image: IMG4,
-    link: '#',
-
+    link: 'https://github.com/i-amprince/LUNAR_LANDER',
+  },
+  {
+    title: "Hisaab Kitaab App (An Expense Tracker App)",
+    description: 'A user-friendly expense tracker app to manage daily finances, visualize spending.',
+    image: IMG6,
+    link: 'https://github.com/i-amprince/Hisaab_Kitaab',
+  },
+  {
+    title: "NotesLuxo (Notes Taking App)",
+    description: 'A feature-rich note-taking app with support for rich text.',
+    image: IMG3,
+    link: 'https://github.com/i-amprince/Notes_App',
+  },
+  {
+    title: "Sorting Algorithm Visualiser",
+    description: 'An interactive tool to visualize and compare different sorting algorithms step-by-step for educational purposes.',
+    image: IMG5,
+    link: 'https://github.com/i-amprince/Sort_Visualiser'
   }
 ];
 
@@ -41,7 +61,7 @@ const Projects = () => {
   return (
     <section id="projects" className="projects-section">
       <ShootingStars />
-      <h2 className="projects-title">Projects</h2>
+      <UFOHeader/>
       <div className="timeline-section">
         <div className="timeline-line"></div>
         {projects.map((project, idx) => (
@@ -83,7 +103,7 @@ const Projects = () => {
         {/* GitHub Footer Section with Button and Paragraph */}
         <div className="github-footer">
           <a 
-             href="https://github.com/your-username" /* <-- IMPORTANT: Replace with your link */
+             href="https://github.com/i-amprince" /* <-- IMPORTANT: Replace with your link */
              target="_blank" 
              rel="noopener noreferrer" 
              className="github-link"
