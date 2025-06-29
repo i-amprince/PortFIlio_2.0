@@ -28,6 +28,13 @@ const projects = [
     image: IMG3,
     link: '#',
   },
+  {
+    title: "Any App",
+    description: 'Just Something Amazing.',
+    image: IMG4,
+    link: '#',
+
+  }
 ];
 
 const Projects = () => {
@@ -35,15 +42,13 @@ const Projects = () => {
     <>
       <ShootingStars />
       <div className="timeline-section">
-        {/* === MAIN TITLE ADDED HERE === */}
-        <h2 className="projects-title">Projects</h2>
-
         <div className="timeline-line"></div>
         {projects.map((project, idx) => (
           <div
             key={idx}
             className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
           >
+            {/* Thread and node from center line to card */}
             <div className="timeline-thread"></div>
             <div className="timeline-node"></div>
             <div className="timeline-content">
@@ -59,14 +64,6 @@ const Projects = () => {
             </div>
           </div>
         ))}
-
-        {/* === GITHUB FOOTER ADDED HERE === */}
-        <div className="github-footer">
-            <p>For a deeper dive into my work and collaborations, feel free to explore my GitHub profile.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" className="github-link">
-                View All Projects on GitHub
-            </a>
-        </div>
       </div>
     </>
   );
