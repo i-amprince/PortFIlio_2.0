@@ -7,12 +7,14 @@ import App2 from './App2'
 import App3 from './App3';
 import App5 from './App5';
 
+import Project from './Section/Project';
+
 import MorningSky from './Background/MorningSky';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
+    <Project/>
   </React.StrictMode>
 );
 
