@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import './typingText.css'; // for optional cursor styling
 
 const TypingText = () => {
-  const texts = ['Web Developer', 'Learner', 'Progammer', 'Curious Technologist'];
+  const texts = useMemo(() => ['Web Developer', 'Learner', 'Progammer', 'Curious Technologist'], []);
   const [textIndex, setTextIndex] = useState(0);
   const [displayed, setDisplayed] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
