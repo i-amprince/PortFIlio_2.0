@@ -12,7 +12,7 @@ import MorningSky from './Background/MorningSky';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App5/>
+    <App/>
   </React.StrictMode>
 );
 
