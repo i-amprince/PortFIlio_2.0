@@ -7,7 +7,7 @@ import Logo from './Images/Group 1.png';
 import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import UFO from './components/UFO';
 
-function App() {
+function App({ onAboutClick }) {
   return (
     <div className="app-no-scroll">
       <ShootingStar />
@@ -17,7 +17,7 @@ function App() {
         <div className="hero-left">
           <h1 className="hero-name">Prince Goyal</h1>
           <div className="hero-typing"><TypingText /></div>
-          <button className="about-button">
+          <button className="about-button" onClick={onAboutClick}>
             About Me
             <span className="arrow">→</span>
           </button>
