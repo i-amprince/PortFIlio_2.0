@@ -117,7 +117,6 @@ const Projects = () => {
         </div>
         
         {/* --- NEW CONTENT ENDS HERE --- */}
-
       </div>
     </section>
   );

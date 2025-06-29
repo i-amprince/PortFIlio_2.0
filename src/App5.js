@@ -5,8 +5,8 @@ import ContactMe from './Section/ContactMe'
 const App5 = () => {
   return (
     <div>
-        <MorningSky/>
-        <ContactMe/>
+      <MorningSky/>
+      <ContactMe/>
     </div>
   )
 }

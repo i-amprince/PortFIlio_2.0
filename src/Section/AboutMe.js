@@ -7,18 +7,10 @@ import ExpressLogo from '../Images/Logos/E.svg';
 import ReactLogo from '../Images/Logos/R.svg';
 import NodeLogo from '../Images/Logos/N.svg';
 
-const AboutMe = ({ onBack }) => {
+const AboutMe = () => {
   return (
     <div className="about-container">
       <div className="about-card">
-        <button
-          style={{
-            position: 'absolute', left: 24, top: 24, zIndex: 10, padding: '8px 18px', borderRadius: '8px', border: 'none', background: '#223a70', color: '#fff', fontWeight: 600, cursor: 'pointer', boxShadow: '0 2px 8px rgba(34,58,112,0.12)' 
-          }}
-          onClick={onBack}
-        >
-          ← Back to Space
-        </button>
         <h2 className="about-title">About Me</h2>
         <div className="about-content-wrapper">
           <div className="about-text-content">

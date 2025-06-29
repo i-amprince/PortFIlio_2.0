@@ -4,9 +4,9 @@ import AboutMe from './Section/AboutMe'
 
 const App2 = () => {
   return (
-    <div >
-    <DaySky/>
-    <AboutMe/>
+    <div>
+      <DaySky/>
+      <AboutMe/>
     </div>
   )
 }

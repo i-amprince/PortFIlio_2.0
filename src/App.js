@@ -11,7 +11,6 @@ function App({ onAboutClick }) {
   return (
     <div className="app-no-scroll">
       <ShootingStar />
-
       <div className="hero-section">
         {/* Left content */}
         <div className="hero-left">
@@ -22,17 +21,14 @@ function App({ onAboutClick }) {
             <span className="arrow">→</span>
           </button>
         </div>
-
         {/* Logo and UFO container */}
         <div className="Logo">
           <img src={Logo} alt="Prince Logo" />
         </div>
-
         {/* UFO placed separately below logo but before social links */}
         <div className="UFO-container">
           <UFO />
         </div>
-
         {/* Socials */}
         <div className="social-links">
           <a href="https://github.com/i-amprince" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
@@ -41,6 +37,7 @@ function App({ onAboutClick }) {
           <a href="mailto:princeg1608@gmail.com"><FaEnvelope /></a>
         </div>
       </div>
+      {/* Next button for flow (optional, hidden on landing) */}
     </div>
   );
 }
