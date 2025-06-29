@@ -39,8 +39,9 @@ const projects = [
 
 const Projects = () => {
   return (
-    <>
+    <section id="projects" className="projects-section">
       <ShootingStars />
+      <h2 className="projects-title">Projects</h2>
       <div className="timeline-section">
         <div className="timeline-line"></div>
         {projects.map((project, idx) => (
@@ -48,7 +49,6 @@ const Projects = () => {
             key={idx}
             className={`timeline-item ${idx % 2 === 0 ? 'left' : 'right'}`}
           >
-            {/* Thread and node from center line to card */}
             <div className="timeline-thread"></div>
             <div className="timeline-node"></div>
             <div className="timeline-content">
@@ -64,8 +64,42 @@ const Projects = () => {
             </div>
           </div>
         ))}
+
+        {/* --- NEW CONTENT STARTS HERE --- */}
+        
+        {/* Arrow to guide the user's eye downwards */}
+        <div className="timeline-arrow">
+          <svg viewBox="0 0 24 24">
+            <defs>
+              <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style={{ stopColor: '#b3b3ff', stopOpacity: 1 }} />
+                <stop offset="100%" style={{ stopColor: '#fff', stopOpacity: 1 }} />
+              </linearGradient>
+            </defs>
+            <path d="M12 21l-12-18h24z" transform="rotate(180 12 12)" />
+          </svg>
+        </div>
+        
+        {/* GitHub Footer Section with Button and Paragraph */}
+        <div className="github-footer">
+          <a 
+             href="https://github.com/your-username" /* <-- IMPORTANT: Replace with your link */
+             target="_blank" 
+             rel="noopener noreferrer" 
+             className="github-link"
+          >
+            Check Out More on GitHub
+          </a>
+          <p>
+            This is a curated selection of my work. For a deeper dive into my code, 
+            contributions, and other experiments, my GitHub is the place to be.
+          </p>
+        </div>
+        
+        {/* --- NEW CONTENT ENDS HERE --- */}
+
       </div>
-    </>
+    </section>
   );
 };
 
