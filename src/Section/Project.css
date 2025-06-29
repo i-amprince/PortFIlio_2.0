@@ -41,7 +41,6 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    /* --- MODIFIED: Increased padding-bottom significantly for light and footer --- */
     padding-bottom: 400px; 
 }
 
@@ -54,14 +53,12 @@
     transform: translateX(-50%);
     border-radius: 2px;
     top: 3rem;
-    /* --- MODIFIED: Ends higher to make room for the arrow and light --- */
     bottom: 220px; 
 }
 
 .timeline-arrow {
     position: absolute;
     left: 50%;
-    /* --- MODIFIED: Moved down to be the source of the light beam --- */
     bottom: 200px; 
     transform: translateX(-50%);
     z-index: 2;
@@ -76,7 +73,6 @@
     filter: drop-shadow(0 2px 8px #b3b3ff88);
 }
 
-/* --- NEW: The glowing yellow torchlight effect --- */
 @keyframes torchGlow {
   0%, 100% {
     opacity: 0.6;
@@ -105,14 +101,13 @@
     filter: blur(20px);
     z-index: -1;
     animation: torchGlow 4s ease-in-out infinite;
-    pointer-events: none; /* Make sure light doesn't block clicks */
+    pointer-events: none;
 }
 
 /* GitHub Footer */
 .github-footer {
     position: absolute;
     left: 50%;
-    /* --- MODIFIED: Pushed down into the light beam --- */
     bottom: 60px; 
     transform: translateX(-50%);
     width: 100%;
@@ -134,13 +129,10 @@
     transition: all 0.3s ease;
 }
 
-/* --- MODIFIED: Added glowing top border and light effect on hover --- */
 .github-link:hover {
     background: linear-gradient(135deg, rgba(136, 136, 255, 0.4), rgba(136, 136, 255, 0.6));
     transform: translateY(-2px);
-    /* Yellow glow from the torchlight */
     box-shadow: 0 5px 25px rgba(255, 220, 120, 0.3), 
-                /* Inset shadow to simulate light hitting the top edge */
                 inset 0 2px 3px rgba(255, 230, 150, 0.4); 
 }
 
@@ -149,12 +141,10 @@
     line-height: 1.7;
     max-width: 550px;
     margin: 1.5rem auto 0;  
-    /* Add a subtle text shadow to make it pop in the light */
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* ... The rest of your styles like .timeline-item remain unchanged ... */
-
+/* Enhanced Timeline Items */
 .timeline-item {
     position: relative;
     width: 50%;
@@ -163,23 +153,285 @@
     margin-bottom: 4rem;
     z-index: 2;
 }
-.timeline-item.left { left: 0; align-items: flex-end; padding-right: 4rem; }
-.timeline-item.right { left: 50%; align-items: flex-start; padding-left: 4rem; }
-.timeline-thread { position: absolute; top: 50%; transform: translateY(-50%); height: 4px; background: linear-gradient(90deg, #b3b3ff 0%, #fff 100%); z-index: 3; width: 64px; }
-.timeline-item.left .timeline-thread { right: 0; border-radius: 0 2px 2px 0; }
-.timeline-item.right .timeline-thread { left: 0; border-radius: 2px 0 0 2px; }
-.timeline-node { position: absolute; top: 50%; width: 18px; height: 18px; background: #fff; border: 4px solid #b3b3ff; border-radius: 50%; z-index: 4; transform: translateY(-50%); }
-.timeline-item.left .timeline-node { right: -9px; }
-.timeline-item.right .timeline-node { left: -9px; }
-.timeline-content { background: rgba(255, 255, 255, 0.08); min-width: 320px; max-width: 420px; box-shadow: 0 4px 24px rgba(136, 136, 255, 0.08); border-radius: 18px; padding: 2rem 1.5rem; position: relative; z-index: 5; }
-.laptop-frame { position: relative; width: 100%; max-width: 350px; height: auto; margin: 0 auto 1.5rem auto; display: flex; justify-content: center; }
-.laptop-img { width: 100%; height: auto; max-width: 350px; filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3)); border-radius: 8px; }
-.project-screenshot { position: absolute; top: 15%; left: 10%; width: 79%; height: 80%; border-radius: 4px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); object-fit: contain; object-position: center top; }
-.project-details { text-align: center; color: white; }
-.project-details h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.8rem; color: #fff; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
-.project-details p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.2rem; color: rgba(255, 255, 255, 0.85); }
-.project-link { display: inline-block; padding: 0.7rem 1.5rem; background: linear-gradient(135deg, rgba(136, 136, 255, 0.2), rgba(136, 136, 255, 0.4)); border: 1px solid rgba(136, 136, 255, 0.3); border-radius: 25px; color: white; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
-.project-link:hover { background: linear-gradient(135deg, rgba(136, 136, 255, 0.4), rgba(136, 136, 255, 0.6)); transform: translateY(-2px); box-shadow: 0 5px 25px rgba(255, 220, 120, 0.3), inset 0 2px 3px rgba(255, 230, 150, 0.4); }
+
+.timeline-item.left { 
+    left: 0; 
+    align-items: flex-end; 
+    padding-right: 4rem; 
+}
+
+.timeline-item.right { 
+    left: 50%; 
+    align-items: flex-start; 
+    padding-left: 4rem; 
+}
+
+.timeline-thread { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    height: 4px; 
+    background: linear-gradient(90deg, #b3b3ff 0%, #fff 100%); 
+    z-index: 3; 
+    width: 64px; 
+    transition: all 0.3s ease;
+}
+
+.timeline-item.left .timeline-thread { 
+    right: 0; 
+    border-radius: 0 2px 2px 0; 
+}
+
+.timeline-item.right .timeline-thread { 
+    left: 0; 
+    border-radius: 2px 0 0 2px; 
+}
+
+.timeline-node { 
+    position: absolute; 
+    top: 50%; 
+    width: 18px; 
+    height: 18px; 
+    background: #fff; 
+    border: 4px solid #b3b3ff; 
+    border-radius: 50%; 
+    z-index: 4; 
+    transform: translateY(-50%); 
+    transition: all 0.3s ease;
+}
+
+.timeline-item.left .timeline-node { 
+    right: -9px; 
+}
+
+.timeline-item.right .timeline-node { 
+    left: -9px; 
+}
+
+/* Enhanced Professional Card Styling */
+.timeline-content {
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    min-width: 360px;
+    max-width: 460px;
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 5;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Card Hover Effects */
+.timeline-content:hover {
+    transform: translateY(-12px) scale(1.02);
+    background: linear-gradient(145deg, 
+        rgba(255, 255, 255, 0.18) 0%, 
+        rgba(255, 255, 255, 0.12) 50%, 
+        rgba(255, 255, 255, 0.08) 100%);
+    border: 1px solid rgba(136, 136, 255, 0.4);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 15px 35px rgba(136, 136, 255, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Enhanced Node and Thread Effects on Card Hover */
+.timeline-item:hover .timeline-node {
+    transform: translateY(-50%) scale(1.3);
+    background: linear-gradient(135deg, #b3b3ff, #fff);
+    border-color: #fff;
+    box-shadow: 0 0 20px rgba(179, 179, 255, 0.6);
+}
+
+.timeline-item:hover .timeline-thread {
+    height: 6px;
+    background: linear-gradient(90deg, #b3b3ff 0%, #fff 50%, #b3b3ff 100%);
+    box-shadow: 0 0 15px rgba(179, 179, 255, 0.4);
+}
+
+/* Floating Animation for Cards */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.timeline-content {
+    animation: float 6s ease-in-out infinite;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    animation-delay: -3s;
+}
+
+/* Enhanced Laptop Frame */
+.laptop-frame {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover .laptop-frame {
+    transform: scale(1.05);
+}
+
+.laptop-img {
+    width: 100%;
+    height: auto;
+    max-width: 380px;
+    filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.project-screenshot {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 79%;
+    height: 80%;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    object-fit: contain;
+    object-position: center top;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover .project-screenshot {
+    transform: scale(1.02);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced Project Details */
+.project-details {
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.project-details::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(179, 179, 255, 0.6), transparent);
+    border-radius: 1px;
+}
+
+.project-details h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    line-height: 1.3;
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover .project-details h3 {
+    color: #b3b3ff;
+    text-shadow: 0 0 20px rgba(179, 179, 255, 0.5);
+}
+
+.project-details p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover .project-details p {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Enhanced Project Link Button */
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: linear-gradient(135deg, 
+        rgba(179, 179, 255, 0.2) 0%, 
+        rgba(179, 179, 255, 0.4) 100%);
+    border: 1px solid rgba(179, 179, 255, 0.3);
+    border-radius: 30px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.2), 
+        transparent);
+    transition: left 0.5s ease;
+}
+
+.project-link:hover::before {
+    left: 100%;
+}
+
+.project-link:hover {
+    background: linear-gradient(135deg, 
+        rgba(179, 179, 255, 0.4) 0%, 
+        rgba(179, 179, 255, 0.6) 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 8px 25px rgba(179, 179, 255, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(179, 179, 255, 0.6);
+}
+
+.project-link:active {
+    transform: translateY(-1px);
+}
+
+/* Add subtle glow effect around cards */
+.timeline-content::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+        rgba(179, 179, 255, 0.1), 
+        rgba(255, 255, 255, 0.05), 
+        rgba(179, 179, 255, 0.1));
+    border-radius: 26px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-content:hover::after {
+    opacity: 1;
+}
 
 /* Responsive Design */
 @media screen and (max-width: 900px) {
@@ -203,27 +455,82 @@
         width: calc(100% - 2rem);
         margin: 0 1rem;
     }
-    .timeline-item, .timeline-item.left, .timeline-item.right { width: 100%; left: 0; align-items: flex-start; padding-left: 4rem; padding-right: 0; margin-bottom: 3rem; }
-    .timeline-content { max-width: 100%; width: 100%; }
-    .timeline-thread { width: 32px; left: 32px; }
-    .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { left: 32px; right: auto; }
-    .timeline-node { left: 23px; }
-    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { left: 23px; right: auto; }
+    .timeline-item, .timeline-item.left, .timeline-item.right { 
+        width: 100%; 
+        left: 0; 
+        align-items: flex-start; 
+        padding-left: 4rem; 
+        padding-right: 0; 
+        margin-bottom: 3rem; 
+    }
+    .timeline-content { 
+        max-width: 100%; 
+        width: 100%; 
+        min-width: 280px;
+    }
+    .timeline-thread { 
+        width: 32px; 
+        left: 32px; 
+    }
+    .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { 
+        left: 32px; 
+        right: auto; 
+    }
+    .timeline-node { 
+        left: 23px; 
+    }
+    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { 
+        left: 23px; 
+        right: auto; 
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .projects-title { font-size: 2.5rem; margin-bottom: 4rem; }
-    .timeline-section { padding: 0 1rem 380px 1rem; }
-    .timeline-line { left: 1rem; }
-    .timeline-arrow { left: 1rem; }
-    .github-footer { width: calc(100% - 1rem); margin: 0 0.5rem; }
-    .timeline-item, .timeline-item.left, .timeline-item.right { padding-left: 2rem; }
-    .timeline-content { padding: 1.5rem; }
-    .timeline-thread, .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { width: 16px; left: 16px; }
-    .timeline-node { left: 7px; }
-    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { left: 7px; right: auto; }
-    .laptop-frame { max-width: 280px; }
-    .project-details h3 { font-size: 1.3rem; }
-    .project-details p { font-size: 0.9rem; }
-    .github-footer p { font-size: 1rem; }
+    .projects-title { 
+        font-size: 2.5rem; 
+        margin-bottom: 4rem; 
+    }
+    .timeline-section { 
+        padding: 0 1rem 380px 1rem; 
+    }
+    .timeline-line { 
+        left: 1rem; 
+    }
+    .timeline-arrow { 
+        left: 1rem; 
+    }
+    .github-footer { 
+        width: calc(100% - 1rem); 
+        margin: 0 0.5rem; 
+    }
+    .timeline-item, .timeline-item.left, .timeline-item.right { 
+        padding-left: 2rem; 
+    }
+    .timeline-content { 
+        padding: 2rem 1.5rem; 
+        min-width: 250px;
+    }
+    .timeline-thread, .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { 
+        width: 16px; 
+        left: 16px; 
+    }
+    .timeline-node { 
+        left: 7px; 
+    }
+    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { 
+        left: 7px; 
+        right: auto; 
+    }
+    .laptop-frame { 
+        max-width: 300px; 
+    }
+    .project-details h3 { 
+        font-size: 1.4rem; 
+    }
+    .project-details p { 
+        font-size: 0.95rem; 
+    }
+    .github-footer p { 
+        font-size: 1rem; 
+    }
 }

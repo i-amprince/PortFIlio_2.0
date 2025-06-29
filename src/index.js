@@ -1,48 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react'; // <-- Import useRef
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+
 import './index.css';
-import App from './App';
+import AppWrapper from './App';
 import App2 from './App2';
 import App3 from './App3';
 import Project from './Section/Project';
 import App5 from './App5';
 import reportWebVitals from './reportWebVitals';
-import { useEffect } from 'react';
-
-const transitions = [
-  // App: fade in from bottom
-  {
-    initial: { opacity: 0, y: 60, scale: 0.98 },
-    animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: [0.4, 0.2, 0.2, 1] } },
-    exit: { opacity: 0, y: -40, scale: 0.98, transition: { duration: 0.4, ease: [0.4, 0.2, 0.2, 1] } }
-  },
-  // App2: fade in from lefta
-  {
-    initial: { opacity: 0, x: -80, scale: 0.98 },
-    animate: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.5, ease: [0.4, 0.2, 0.2, 1] } },
-    exit: { opacity: 0, x: 80, scale: 0.98, transition: { duration: 0.4, ease: [0.4, 0.2, 0.2, 1] } }
-  },
-  // App3: flip in Y
-  {
-    initial: { opacity: 0, rotateY: 90 },
-    animate: { opacity: 1, rotateY: 0, transition: { duration: 0.6, ease: [0.4, 0.2, 0.2, 1] } },
-    exit: { opacity: 0, rotateY: -90, transition: { duration: 0.5, ease: [0.4, 0.2, 0.2, 1] } }
-  },
-  // Project: fade in from right
-  {
-    initial: { opacity: 0, x: 80, scale: 0.98 },
-    animate: { opacity: 1, x: 0, scale: 1, transition: { duration: 0.5, ease: [0.4, 0.2, 0.2, 1] } },
-    exit: { opacity: 0, x: -80, scale: 0.98, transition: { duration: 0.4, ease: [0.4, 0.2, 0.2, 1] } }
-  },
-  // App5: scale up and fade
-  {
-    initial: { opacity: 0, scale: 0.92 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.4, 0.2, 0.2, 1] } },
-    exit: { opacity: 0, scale: 1.08, transition: { duration: 0.4, ease: [0.4, 0.2, 0.2, 1] } }
-  }
-];
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -52,6 +19,12 @@ const navLinks = [
   { path: '/contact', label: 'Contact' }
 ];
 
+const getPathIndex = (pathname) => {
+  const index = navLinks.findIndex(link => link.path === pathname);
+  return index === -1 ? 0 : index;
+};
+
+// --- Navbar (No changes needed) ---
 function Navbar() {
   const location = useLocation();
   return (
@@ -73,7 +46,7 @@ function Navbar() {
       fontSize: '1.1rem',
       transition: 'background 0.3s, box-shadow 0.3s',
     }}>
-      {navLinks.map((link, i) => (
+      {navLinks.map((link) => (
         <Link
           key={link.path}
           to={link.path}
@@ -95,85 +68,103 @@ function Navbar() {
   );
 }
 
-// Custom transition for App <-> App2: both slide left and crossfade
-const slideLeftCrossFade = {
-  initial: { opacity: 0, x: 120 },
-  animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.4, 0.2, 0.2, 1] } },
-  exit: { opacity: 0, x: -120, transition: { duration: 0.7, ease: [0.4, 0.2, 0.2, 1] } }
-};
-
+// --- AnimatedRoutes (CORRECTED LOGIC) ---
 function AnimatedRoutes() {
   const location = useLocation();
-  
-  // Map paths to transition indices
-  const getTransitionIndex = (pathname) => {
-    switch(pathname) {
-      case '/': return 0;
-      case '/about': return 1;
-      case '/education': return 2;
-      case '/projects': return 3;
-      case '/contact': return 4;
-      default: return 0;
+
+  // Key Change #1: Use a ref to store the previous index.
+  // It's initialized once with the starting page's index.
+  const prevPathIndexRef = useRef(getPathIndex(location.pathname));
+
+  // The direction state remains, as changing it SHOULD trigger a re-render to update animations.
+  const [direction, setDirection] = useState(1);
+
+  // Key Change #2: The useEffect hook is now simpler and more reliable.
+  useEffect(() => {
+    const currentIndex = getPathIndex(location.pathname);
+    const prevIndex = prevPathIndexRef.current; // Get the previous index from the ref
+
+    if (currentIndex > prevIndex) {
+      setDirection(1); // Moving forward
+    } else if (currentIndex < prevIndex) {
+      setDirection(-1); // Moving backward
     }
+    // If indexes are the same, do nothing.
+
+    // VERY IMPORTANT: Update the ref's '.current' value at the end of the effect.
+    // This does NOT cause a re-render. It just sets the value for the *next* time this effect runs.
+    prevPathIndexRef.current = currentIndex;
+    
+  }, [location.pathname]); // The effect now ONLY depends on the location changing.
+
+  const pageVariants = {
+    initial: {
+      opacity: 0,
+      x: direction === 1 ? '100vw' : '-100vw',
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: 'easeInOut' },
+    },
+    exit: {
+      opacity: 0,
+      zIndex: -1, // Make exiting page go behind entering page for a cleaner look
+      x: direction === 1 ? '-100vw' : '100vw',
+      transition: { duration: 0.5, ease: 'easeInOut' },
+    },
   };
   
+  const pageStyle = {
+    position: 'absolute',
+    width: '100%',
+  };
+
   return (
-    <div style={{ 
+    <div style={{
+      position: 'relative',
       marginTop: '90px',
       minHeight: 'calc(100vh - 90px)',
-      position: 'relative',
-      zIndex: 1
+      width: '100%',
+      overflow: 'hidden',
+      zIndex: 1,
     }}>
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={
-            <motion.div 
-              key="home"
-              {...slideLeftCrossFade}
-            >
-              <App />
-            </motion.div>
-          } />
-          <Route path="/about" element={
-            <motion.div 
-              key="about"
-              {...slideLeftCrossFade}
-            >
-              <App2 />
-            </motion.div>
-          } />
-          <Route path="/education" element={
-            <motion.div 
-              key="education"
-              style={{ perspective: 1200 }} 
-              {...transitions[2]}
-            >
-              <App3 />
-            </motion.div>
-          } />
-          <Route path="/projects" element={
-            <motion.div 
-              key="projects"
-              {...transitions[3]}
-            >
-              <Project />
-            </motion.div>
-          } />
-          <Route path="/contact" element={
-            <motion.div 
-              key="contact"
-              {...transitions[4]}
-            >
-              <App5 />
-            </motion.div>
-          } />
-          <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="/" element={
+              <motion.div key="home" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <AppWrapper />
+              </motion.div>
+            }/>
+            <Route path="/about" element={
+              <motion.div key="about" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <App2 />
+              </motion.div>
+            }/>
+            <Route path="/education" element={
+              <motion.div key="education" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <App3 />
+              </motion.div>
+            }/>
+            <Route path="/projects" element={
+              <motion.div key="projects" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <Project />
+              </motion.div>
+            }/>
+            <Route path="/contact" element={
+              <motion.div key="contact" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+                <App5 />
+              </motion.div>
+            }/>
+            <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
     </div>
   );
 }
 
+
+// --- BodyScrollManager and Root Render (No changes needed) ---
 function BodyScrollManager() {
   const location = useLocation();
   useEffect(() => {
