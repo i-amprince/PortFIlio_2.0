@@ -79,7 +79,7 @@ const Education = () => {
   return (
     <>
       {/* Education Section */}
-      <div style={{
+      <div className="education-container" style={{
         position: 'relative',
         background: 'linear-gradient(135deg, #ff8c50 0%, #ffb75e 25%, #ffdec9 50%, #fff5eb 75%, #ffffff 100%)',
         minHeight: '100vh',
@@ -87,14 +87,14 @@ const Education = () => {
         zIndex: 4
       }}>
         {/* Header */}
-        <div style={{
+        <div className="education-header" style={{
           textAlign: 'center',
           marginBottom: '4rem',
           maxWidth: '800px',
           marginLeft: 'auto',
           marginRight: 'auto'
         }}>
-          <h2 style={{
+          <h2 className="education-title" style={{
             fontSize: '3.5rem',
             fontWeight: '800',
             color: '#2c3e50',
@@ -116,7 +116,7 @@ const Education = () => {
               boxShadow: '0 2px 8px rgba(255, 140, 80, 0.3)'
             }}></div>
           </h2>
-          <p style={{
+          <p className="education-subtitle" style={{
             fontSize: '1.2rem',
             color: '#5a6c7d',
             fontWeight: '400',
@@ -128,7 +128,7 @@ const Education = () => {
         </div>
 
         {/* Education Timeline */}
-        <div style={{
+        <div className="education-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
           gap: '2.5rem',
@@ -143,6 +143,7 @@ const Education = () => {
             return (
               <div
                 key={edu.id}
+                className="education-card"
                 style={{
                   background: 'rgba(255, 255, 255, 0.95)',
                   backdropFilter: 'blur(20px)',
@@ -180,13 +181,13 @@ const Education = () => {
                 }}></div>
 
                 {/* Header */}
-                <div style={{
+                <div className="education-card-header" style={{
                   display: 'flex',
                   alignItems: 'flex-start',
                   marginBottom: '1.5rem',
                   gap: '1rem'
                 }}>
-                  <div style={{
+                  <div className="education-icon" style={{
                     fontSize: '2.5rem',
                     filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1))'
                   }}>
@@ -194,13 +195,13 @@ const Education = () => {
                   </div>
                   
                   <div style={{ flex: 1 }}>
-                    <div style={{
+                    <div className="education-title-row" style={{
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'flex-start',
                       marginBottom: '0.5rem'
                     }}>
-                      <h3 style={{
+                      <h3 className="education-card-title" style={{
                         fontSize: '1.5rem',
                         fontWeight: '700',
                         color: colors.accent,
@@ -209,7 +210,7 @@ const Education = () => {
                       }}>
                         {edu.title}
                       </h3>
-                      <div style={{
+                      <div className="education-status" style={{
                         background: colors.bg,
                         color: colors.accent,
                         padding: '0.4rem 0.8rem',
@@ -224,7 +225,7 @@ const Education = () => {
                       </div>
                     </div>
                     
-                    <h4 style={{
+                    <h4 className="education-card-subtitle" style={{
                       fontSize: '1.1rem',
                       fontWeight: '600',
                       color: '#4a5568',
@@ -236,14 +237,14 @@ const Education = () => {
                 </div>
 
                 {/* Institution & Duration */}
-                <div style={{
+                <div className="education-meta" style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '1rem',
                   marginBottom: '1rem',
                   flexWrap: 'wrap'
                 }}>
-                  <div style={{
+                  <div className="education-institution" style={{
                     background: 'rgba(0, 0, 0, 0.05)',
                     padding: '0.6rem 1.2rem',
                     borderRadius: '25px',
@@ -258,7 +259,7 @@ const Education = () => {
                     {edu.institution}
                   </div>
                   
-                  <div style={{
+                  <div className="education-duration" style={{
                     background: colors.bg,
                     color: colors.accent,
                     padding: '0.6rem 1.2rem',
@@ -275,7 +276,7 @@ const Education = () => {
                   </div>
 
                   {edu.gpa && (
-                    <div style={{
+                    <div className="education-gpa" style={{
                       background: `linear-gradient(135deg, ${colors.accent}15, ${colors.accent}25)`,
                       color: colors.accent,
                       padding: '0.6rem 1.2rem',
@@ -294,7 +295,7 @@ const Education = () => {
                 </div>
 
                 {/* Description */}
-                <p style={{
+                <p className="education-details" style={{
                   fontSize: '1rem',
                   lineHeight: '1.7',
                   color: '#4a5568',
@@ -305,7 +306,7 @@ const Education = () => {
                 </p>
 
                 {/* Highlights */}
-                <div style={{
+                <div className="education-highlights" style={{
                   display: 'flex',
                   flexWrap: 'wrap',
                   gap: '0.5rem'
@@ -313,6 +314,7 @@ const Education = () => {
                   {edu.highlights.map((highlight, idx) => (
                     <span
                       key={idx}
+                      className="education-highlight"
                       style={{
                         background: 'rgba(0, 0, 0, 0.05)',
                         color: '#2d3748',
@@ -347,7 +349,7 @@ const Education = () => {
         </div>
 
         {/* Summary Stats */}
-        <div style={{
+        <div className="education-stats" style={{
           marginTop: '4rem',
           padding: '3rem 2rem',
           background: 'rgba(255, 255, 255, 0.3)',
@@ -358,7 +360,7 @@ const Education = () => {
           maxWidth: '800px',
           margin: '4rem auto 0'
         }}>
-          <div style={{
+          <div className="education-stats-grid" style={{
             display: 'flex',
             justifyContent: 'center',
             gap: '4rem',
@@ -370,14 +372,14 @@ const Education = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{
+              <span className="stat-number" style={{
                 fontSize: '3rem',
                 fontWeight: '800',
                 color: '#2c3e50',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 lineHeight: 1
               }}>4</span>
-              <span style={{
+              <span className="stat-label" style={{
                 fontSize: '1.1rem',
                 color: '#5a6c7d',
                 fontWeight: '600',
@@ -392,14 +394,14 @@ const Education = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{
+              <span className="stat-number" style={{
                 fontSize: '3rem',
                 fontWeight: '800',
                 color: '#2c3e50',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 lineHeight: 1
               }}>7.7</span>
-              <span style={{
+              <span className="stat-label" style={{
                 fontSize: '1.1rem',
                 color: '#5a6c7d',
                 fontWeight: '600',
@@ -414,14 +416,14 @@ const Education = () => {
               alignItems: 'center',
               gap: '0.5rem'
             }}>
-              <span style={{
+              <span className="stat-number" style={{
                 fontSize: '3rem',
                 fontWeight: '800',
                 color: '#2c3e50',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 lineHeight: 1
               }}>2027</span>
-              <span style={{
+              <span className="stat-label" style={{
                 fontSize: '1.1rem',
                 color: '#5a6c7d',
                 fontWeight: '600',
@@ -432,6 +434,179 @@ const Education = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile Responsive Styles */}
+      <style jsx>{`
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+          .education-container {
+            padding: 1rem 1rem 2rem 1rem !important;
+            min-height: calc(100vh - 70px) !important;
+          }
+          
+          .education-header {
+            margin-bottom: 2rem !important;
+            padding: 0 0.5rem !important;
+          }
+          
+          .education-title {
+            font-size: 2rem !important;
+            margin-bottom: 1rem !important;
+            letter-spacing: 1px !important;
+          }
+          
+          .education-subtitle {
+            font-size: 1rem !important;
+            margin-top: 1rem !important;
+          }
+          
+          .education-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+            padding: 1rem 0 !important;
+          }
+          
+          .education-card {
+            padding: 1.5rem !important;
+            border-radius: 16px !important;
+          }
+          
+          .education-card-header {
+            flex-direction: column !important;
+            gap: 1rem !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .education-icon {
+            font-size: 2rem !important;
+            align-self: flex-start !important;
+          }
+          
+          .education-title-row {
+            flex-direction: column !important;
+            gap: 0.5rem !important;
+            align-items: flex-start !important;
+          }
+          
+          .education-card-title {
+            font-size: 1.2rem !important;
+          }
+          
+          .education-card-subtitle {
+            font-size: 0.95rem !important;
+          }
+          
+          .education-status {
+            font-size: 0.75rem !important;
+            padding: 0.3rem 0.6rem !important;
+            align-self: flex-start !important;
+          }
+          
+          .education-meta {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0.75rem !important;
+          }
+          
+          .education-institution {
+            font-size: 0.8rem !important;
+            padding: 0.5rem 1rem !important;
+            width: 100% !important;
+            justify-content: center !important;
+            text-align: center !important;
+          }
+          
+          .education-duration,
+          .education-gpa {
+            font-size: 0.8rem !important;
+            padding: 0.5rem 1rem !important;
+          }
+          
+          .education-details {
+            font-size: 0.9rem !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .education-highlights {
+            gap: 0.4rem !important;
+          }
+          
+          .education-highlight {
+            font-size: 0.75rem !important;
+            padding: 0.25rem 0.6rem !important;
+          }
+          
+          .education-stats {
+            margin-top: 2rem !important;
+            padding: 2rem 1rem !important;
+            margin-left: 1rem !important;
+            margin-right: 1rem !important;
+          }
+          
+          .education-stats-grid {
+            gap: 2rem !important;
+          }
+          
+          .stat-number {
+            font-size: 2.5rem !important;
+          }
+          
+          .stat-label {
+            font-size: 0.9rem !important;
+          }
+        }
+        
+        /* Extra small mobile */
+        @media (max-width: 480px) {
+          .education-container {
+            padding: 0.5rem 0.5rem 1.5rem 0.5rem !important;
+          }
+          
+          .education-title {
+            font-size: 1.75rem !important;
+          }
+          
+          .education-subtitle {
+            font-size: 0.9rem !important;
+          }
+          
+          .education-card {
+            padding: 1rem !important;
+          }
+          
+          .education-card-title {
+            font-size: 1.1rem !important;
+          }
+          
+          .education-institution {
+            font-size: 0.75rem !important;
+          }
+          
+          .education-stats {
+            padding: 1.5rem 0.5rem !important;
+          }
+          
+          .education-stats-grid {
+            gap: 1.5rem !important;
+          }
+          
+          .stat-number {
+            font-size: 2rem !important;
+          }
+          
+          .stat-label {
+            font-size: 0.8rem !important;
+          }
+        }
+        
+        /* Ensure proper spacing from navbar */
+        @media (max-width: 768px) {
+          .education-container {
+            margin-top: 0 !important;
+            padding-top: 1.5rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 };
