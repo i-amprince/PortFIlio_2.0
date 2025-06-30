@@ -1,8 +1,8 @@
 # Prince Goyal's Portfolio 2.0
 
-![App Screenshot](src/Images/ProjectImages/Project7.png)
-
 A visually dynamic, interactive React-based portfolio website featuring animated backgrounds, smooth transitions, and a showcase of skills, education, and projects.
+
+![App Screenshot](src/Images/ProjectImages/Project7.png)
 
 ## Features
 - Animated backgrounds (day, night, evening, morning)
@@ -20,11 +20,30 @@ A visually dynamic, interactive React-based portfolio website featuring animated
 - Custom SVG and CSS animations
 - Modern CSS (flex, grid, gradients, blur, etc.)
 
+## Folder Structure
+```
+portfolioo/
+├── public/
+├── src/
+│   ├── Background/         # Animated backgrounds (DaySky, EveningSky, etc.)
+│   ├── components/         # Reusable SVGs, UFO, typing text, etc.
+│   ├── Section/            # Main sections: AboutMe, Education, Skills, Project, ContactMe
+│   ├── App.js              # Hero landing page
+│   ├── App2.js             # About section
+│   ├── App3.js             # Education & Skills toggle
+│   ├── App5.js             # Contact section
+│   ├── index.js            # Main entry, routing, transitions
+│   └── ...
+├── package.json
+└── README.md
+```
+
 ## Getting Started
 
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/i-amprince/PortFolio_2.0.git
+   cd PortFolio_2.0/portfolioo
    ```
 2. **Install dependencies:**
    ```sh
@@ -42,5 +61,8 @@ A visually dynamic, interactive React-based portfolio website featuring animated
 - Replace images in `src/Images/` as needed.
 - Tweak colors and backgrounds in the CSS files for a personalized look.
 
+```sh
+npm run build
+```
 ## License
-This project is open source and available under the MIT License.
+This project is open source and available under the [MIT License](LICENSE).

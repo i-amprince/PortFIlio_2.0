@@ -31,7 +31,7 @@ const educationData = [
     id: 3,
     title: "Secondary Education",
     subtitle: "Class X Board Examination",
-    institution: "Senior Secondary School",
+    institution: "St. Vivekanand Sr. Sec. Public School",
     duration: "2019 – 2020",
     status: "Completed",
     gpa: "96%",
