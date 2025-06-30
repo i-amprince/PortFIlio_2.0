@@ -28,7 +28,7 @@ const App3 = () => {
       {/* Navigation */}
       <div style={{
         position: 'fixed',
-        top: '2rem',
+        top: '6.5rem', // moved further down to avoid navbar
         right: '2rem',
         zIndex: 1000,
         display: 'flex',
