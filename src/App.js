@@ -8,14 +8,9 @@ import { FaGithub, FaInstagram, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import UFO from './components/UFO';
 import { useNavigate } from 'react-router-dom';
 
-function App({ onAboutClick, navigate }) {
-  const handleAbout = () => {
-    if (navigate) {
-      navigate('/about');
-    } else if (onAboutClick) {
-      onAboutClick();
-    }
-  };
+function App() {
+  const navigate = useNavigate();
+
   return (
     <div className="app-no-scroll">
       <ShootingStar />
@@ -24,7 +19,7 @@ function App({ onAboutClick, navigate }) {
         <div className="hero-left">
           <h1 className="hero-name">Prince Goyal</h1>
           <div className="hero-typing"><TypingText /></div>
-          <button className="about-button" onClick={handleAbout}>
+          <button className="about-button" onClick={() => navigate('/about')}>
             About Me
             <span className="arrow">→</span>
           </button>
@@ -50,9 +45,4 @@ function App({ onAboutClick, navigate }) {
   );
 }
 
-function AppWrapper(props) {
-  const navigate = useNavigate();
-  return <App {...props} navigate={navigate} />;
-}
-
-export default AppWrapper;
+export default App;

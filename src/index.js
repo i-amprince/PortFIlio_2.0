@@ -1,15 +1,22 @@
-import React, { useEffect, useState, useRef } from 'react'; // <-- Import useRef
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate, Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-
 import './index.css';
-import AppWrapper from './App';
+import App from './App';
 import App2 from './App2';
 import App3 from './App3';
 import Project from './Section/Project';
 import App5 from './App5';
 import reportWebVitals from './reportWebVitals';
+import { useEffect } from 'react';
+
+// Simple fade transition for all routes
+const fadeTransition = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } },
+  exit: { opacity: 0, transition: { duration: 0.5, ease: 'easeInOut' } }
+};
 
 const navLinks = [
   { path: '/', label: 'Home' },
@@ -19,12 +26,6 @@ const navLinks = [
   { path: '/contact', label: 'Contact' }
 ];
 
-const getPathIndex = (pathname) => {
-  const index = navLinks.findIndex(link => link.path === pathname);
-  return index === -1 ? 0 : index;
-};
-
-// --- Navbar (No changes needed) ---
 function Navbar() {
   const location = useLocation();
   return (
@@ -46,7 +47,7 @@ function Navbar() {
       fontSize: '1.1rem',
       transition: 'background 0.3s, box-shadow 0.3s',
     }}>
-      {navLinks.map((link) => (
+      {navLinks.map((link, i) => (
         <Link
           key={link.path}
           to={link.path}
@@ -68,103 +69,64 @@ function Navbar() {
   );
 }
 
-// --- AnimatedRoutes (CORRECTED LOGIC) ---
 function AnimatedRoutes() {
   const location = useLocation();
-
-  // Key Change #1: Use a ref to store the previous index.
-  // It's initialized once with the starting page's index.
-  const prevPathIndexRef = useRef(getPathIndex(location.pathname));
-
-  // The direction state remains, as changing it SHOULD trigger a re-render to update animations.
-  const [direction, setDirection] = useState(1);
-
-  // Key Change #2: The useEffect hook is now simpler and more reliable.
-  useEffect(() => {
-    const currentIndex = getPathIndex(location.pathname);
-    const prevIndex = prevPathIndexRef.current; // Get the previous index from the ref
-
-    if (currentIndex > prevIndex) {
-      setDirection(1); // Moving forward
-    } else if (currentIndex < prevIndex) {
-      setDirection(-1); // Moving backward
-    }
-    // If indexes are the same, do nothing.
-
-    // VERY IMPORTANT: Update the ref's '.current' value at the end of the effect.
-    // This does NOT cause a re-render. It just sets the value for the *next* time this effect runs.
-    prevPathIndexRef.current = currentIndex;
-    
-  }, [location.pathname]); // The effect now ONLY depends on the location changing.
-
-  const pageVariants = {
-    initial: {
-      opacity: 0,
-      x: direction === 1 ? '100vw' : '-100vw',
-    },
-    animate: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: 'easeInOut' },
-    },
-    exit: {
-      opacity: 0,
-      zIndex: -1, // Make exiting page go behind entering page for a cleaner look
-      x: direction === 1 ? '-100vw' : '100vw',
-      transition: { duration: 0.5, ease: 'easeInOut' },
-    },
-  };
-  
-  const pageStyle = {
-    position: 'absolute',
-    width: '100%',
-  };
-
   return (
-    <div style={{
-      position: 'relative',
+    <div style={{ 
       marginTop: '90px',
       minHeight: 'calc(100vh - 90px)',
-      width: '100%',
-      overflow: 'hidden',
-      zIndex: 1,
+      position: 'relative',
+      zIndex: 1
     }}>
-      <AnimatePresence initial={false}>
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-            <Route path="/" element={
-              <motion.div key="home" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <AppWrapper />
-              </motion.div>
-            }/>
-            <Route path="/about" element={
-              <motion.div key="about" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <App2 />
-              </motion.div>
-            }/>
-            <Route path="/education" element={
-              <motion.div key="education" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <App3 />
-              </motion.div>
-            }/>
-            <Route path="/projects" element={
-              <motion.div key="projects" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <Project />
-              </motion.div>
-            }/>
-            <Route path="/contact" element={
-              <motion.div key="contact" style={pageStyle} variants={pageVariants} initial="initial" animate="animate" exit="exit">
-                <App5 />
-              </motion.div>
-            }/>
-            <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/" element={
+            <motion.div 
+              key="home"
+              {...fadeTransition}
+            >
+              <App />
+            </motion.div>
+          } />
+          <Route path="/about" element={
+            <motion.div 
+              key="about"
+              {...fadeTransition}
+            >
+              <App2 />
+            </motion.div>
+          } />
+          <Route path="/education" element={
+            <motion.div 
+              key="education"
+              {...fadeTransition}
+            >
+              <App3 />
+            </motion.div>
+          } />
+          <Route path="/projects" element={
+            <motion.div 
+              key="projects"
+              {...fadeTransition}
+            >
+              <Project />
+            </motion.div>
+          } />
+          <Route path="/contact" element={
+            <motion.div 
+              key="contact"
+              {...fadeTransition}
+            >
+              <App5 />
+            </motion.div>
+          } />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AnimatePresence>
     </div>
   );
 }
 
-
-// --- BodyScrollManager and Root Render (No changes needed) ---
 function BodyScrollManager() {
   const location = useLocation();
   useEffect(() => {

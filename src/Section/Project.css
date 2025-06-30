@@ -1,38 +1,41 @@
-/* Projects Section General Styling */
+/* Projects Section - Professional Styling */
 .projects-section {
     position: relative;
     z-index: 1;
-    padding: 8vh 2rem;
+    padding: 10vh 2rem;
     min-height: 100vh;
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: linear-gradient(135deg, rgba(13, 16, 28, 0.95) 0%, rgba(20, 26, 45, 0.98) 100%);
 }
 
 .projects-title {
     text-align: center;
-    font-size: 3rem;
-    font-weight: 800;
-    color: white;
-    margin-bottom: 5rem;
-    text-shadow: 0 0 20px rgba(136, 136, 255, 0.7);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6rem;
     position: relative;
     z-index: 3;
-    padding-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #ffffff 0%, #e6e9ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .projects-title::after {
     content: '';
     display: block;
-    margin: 0 auto;
-    margin-top: 1.2rem;
-    width: 60px;
-    height: 6px;
-    border-radius: 3px;
-    background: linear-gradient(90deg, #b3b3ff 0%, #fff 100%);
-    box-shadow: 0 2px 12px rgba(136, 136, 255, 0.3);
+    margin: 2rem auto 0;
+    width: 80px;
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
 }
 
 /* Timeline Section */
@@ -41,140 +44,74 @@
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 400px; 
+    padding-bottom: 450px;
 }
 
 .timeline-line {
     position: absolute;
     left: 50%;
-    width: 4px;
-    background: linear-gradient(180deg, #b3b3ff 0%, #fff 85%);
+    width: 2px;
+    background: linear-gradient(180deg, 
+        rgba(99, 102, 241, 0.8) 0%, 
+        rgba(139, 92, 246, 0.6) 50%, 
+        rgba(6, 182, 212, 0.4) 100%
+    );
     z-index: 1;
     transform: translateX(-50%);
-    border-radius: 2px;
+    border-radius: 1px;
     top: 3rem;
-    bottom: 220px; 
+    bottom: 280px;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
 }
 
-.timeline-arrow {
-    position: absolute;
-    left: 50%;
-    bottom: 200px; 
-    transform: translateX(-50%);
-    z-index: 2;
-    width: 32px;
-    height: 32px;
-}
-
-.timeline-arrow svg {
-    width: 100%;
-    height: 100%;
-    fill: url(#arrowGradient);
-    filter: drop-shadow(0 2px 8px #b3b3ff88);
-}
-
-@keyframes torchGlow {
-  0%, 100% {
-    opacity: 0.6;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 0.9;
-    transform: translateX(-50%) scale(1.05);
-  }
-}
-
-.timeline-arrow::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(
-      ellipse at 50% 0%,
-      rgba(255, 230, 150, 0.6) 0%,
-      rgba(255, 200, 50, 0.1) 40%,
-      rgba(255, 180, 50, 0) 70%
-    );
-    filter: blur(20px);
-    z-index: -1;
-    animation: torchGlow 4s ease-in-out infinite;
-    pointer-events: none;
-}
-
-/* GitHub Footer */
-.github-footer {
-    position: absolute;
-    left: 50%;
-    bottom: 60px; 
-    transform: translateX(-50%);
-    width: 100%;
-    padding: 0 1rem;
-    text-align: center;
-    z-index: 2;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.github-link {
-    display: inline-block;
-    padding: 0.8rem 1.8rem;
-    background: linear-gradient(135deg, rgba(136, 136, 255, 0.2), rgba(136, 136, 255, 0.4));
-    border: 1px solid rgba(136, 136, 255, 0.3);
-    border-radius: 25px;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.github-link:hover {
-    background: linear-gradient(135deg, rgba(136, 136, 255, 0.4), rgba(136, 136, 255, 0.6));
-    transform: translateY(-2px);
-    box-shadow: 0 5px 25px rgba(255, 220, 120, 0.3), 
-                inset 0 2px 3px rgba(255, 230, 150, 0.4); 
-}
-
-.github-footer p {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    max-width: 550px;
-    margin: 1.5rem auto 0;  
-    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-}
-
-/* Enhanced Timeline Items */
+/* Timeline Items */
 .timeline-item {
     position: relative;
     width: 50%;
     display: flex;
     flex-direction: column;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(odd) { animation-delay: 0.1s; }
+.timeline-item:nth-child(even) { animation-delay: 0.2s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .timeline-item.left { 
     left: 0; 
     align-items: flex-end; 
-    padding-right: 4rem; 
+    padding-right: 5rem; 
 }
 
 .timeline-item.right { 
     left: 50%; 
     align-items: flex-start; 
-    padding-left: 4rem; 
+    padding-left: 5rem; 
 }
 
-.timeline-thread { 
-    position: absolute; 
-    top: 50%; 
-    transform: translateY(-50%); 
-    height: 4px; 
-    background: linear-gradient(90deg, #b3b3ff 0%, #fff 100%); 
-    z-index: 3; 
-    width: 64px; 
-    transition: all 0.3s ease;
+.timeline-thread {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+    z-index: 3;
+    width: 80px;
+    border-radius: 1px;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
 }
 
 .timeline-item.left .timeline-thread { 
@@ -187,89 +124,72 @@
     border-radius: 2px 0 0 2px; 
 }
 
-.timeline-node { 
-    position: absolute; 
-    top: 50%; 
-    width: 18px; 
-    height: 18px; 
-    background: #fff; 
-    border: 4px solid #b3b3ff; 
-    border-radius: 50%; 
-    z-index: 4; 
-    transform: translateY(-50%); 
+.timeline-node {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    z-index: 4;
+    transform: translateY(-50%);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.6), 
+                0 4px 12px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
 }
 
-.timeline-item.left .timeline-node { 
-    right: -9px; 
+.timeline-item:hover .timeline-node {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.8), 
+                0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
-.timeline-item.right .timeline-node { 
-    left: -9px; 
-}
+.timeline-item.left .timeline-node { right: -10px; }
+.timeline-item.right .timeline-node { left: -10px; }
 
-/* Enhanced Professional Card Styling */
+/* Timeline Content Cards */
 .timeline-content {
-    background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.12) 0%, 
-        rgba(255, 255, 255, 0.08) 50%, 
-        rgba(255, 255, 255, 0.05) 100%);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    min-width: 360px;
-    max-width: 460px;
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 380px;
+    max-width: 480px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 1px 0 rgba(255, 255, 255, 0.05) inset;
     border-radius: 24px;
     padding: 2.5rem 2rem;
     position: relative;
     z-index: 5;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
 }
 
-/* Card Hover Effects */
+.timeline-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(99, 102, 241, 0.5) 50%, 
+        transparent 100%
+    );
+}
+
 .timeline-content:hover {
-    transform: translateY(-12px) scale(1.02);
-    background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.18) 0%, 
-        rgba(255, 255, 255, 0.12) 50%, 
-        rgba(255, 255, 255, 0.08) 100%);
-    border: 1px solid rgba(136, 136, 255, 0.4);
+    transform: translateY(-8px);
     box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.25),
-        0 15px 35px rgba(136, 136, 255, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 1px 0 rgba(255, 255, 255, 0.1) inset;
+    border-color: rgba(99, 102, 241, 0.2);
 }
 
-/* Enhanced Node and Thread Effects on Card Hover */
-.timeline-item:hover .timeline-node {
-    transform: translateY(-50%) scale(1.3);
-    background: linear-gradient(135deg, #b3b3ff, #fff);
-    border-color: #fff;
-    box-shadow: 0 0 20px rgba(179, 179, 255, 0.6);
-}
-
-.timeline-item:hover .timeline-thread {
-    height: 6px;
-    background: linear-gradient(90deg, #b3b3ff 0%, #fff 50%, #b3b3ff 100%);
-    box-shadow: 0 0 15px rgba(179, 179, 255, 0.4);
-}
-
-/* Floating Animation for Cards */
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-}
-
-.timeline-content {
-    animation: float 6s ease-in-out infinite;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    animation-delay: -3s;
-}
-
-/* Enhanced Laptop Frame */
+/* Laptop Frame Styling */
 .laptop-frame {
     position: relative;
     width: 100%;
@@ -278,20 +198,19 @@
     margin: 0 auto 2rem auto;
     display: flex;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .timeline-content:hover .laptop-frame {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .laptop-img {
     width: 100%;
     height: auto;
     max-width: 380px;
-    filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
     border-radius: 12px;
-    transition: all 0.3s ease;
 }
 
 .project-screenshot {
@@ -301,79 +220,73 @@
     width: 79%;
     height: 80%;
     border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
     object-fit: contain;
     object-position: center top;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
-.timeline-content:hover .project-screenshot {
-    transform: scale(1.02);
-    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Enhanced Project Details */
+/* Project Details */
 .project-details {
-    text-align: center;
+    text-align: left;
     color: white;
-    position: relative;
-}
-
-.project-details::before {
-    content: '';
-    position: absolute;
-    top: -1rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(179, 179, 255, 0.6), transparent);
-    border-radius: 1px;
 }
 
 .project-details h3 {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 1.75rem;
+    font-weight: 600;
     margin-bottom: 1rem;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    letter-spacing: -0.01em;
     line-height: 1.3;
-    transition: all 0.3s ease;
-}
-
-.timeline-content:hover .project-details h3 {
-    color: #b3b3ff;
-    text-shadow: 0 0 20px rgba(179, 179, 255, 0.5);
 }
 
 .project-details p {
     font-size: 1rem;
     line-height: 1.7;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+}
+
+/* Tech Stack Styling */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.tech-tag {
+    padding: 0.375rem 0.875rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 20px;
     color: rgba(255, 255, 255, 0.9);
+    font-size: 0.875rem;
+    font-weight: 500;
     transition: all 0.3s ease;
 }
 
-.timeline-content:hover .project-details p {
-    color: rgba(255, 255, 255, 0.95);
+.tech-tag:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.4);
 }
 
-/* Enhanced Project Link Button */
 .project-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.9rem 2rem;
-    background: linear-gradient(135deg, 
-        rgba(179, 179, 255, 0.2) 0%, 
-        rgba(179, 179, 255, 0.4) 100%);
-    border: 1px solid rgba(179, 179, 255, 0.3);
-    border-radius: 30px;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    border: none;
+    border-radius: 50px;
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -386,9 +299,10 @@
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, 
-        transparent, 
-        rgba(255, 255, 255, 0.2), 
-        transparent);
+        transparent 0%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        transparent 100%
+    );
     transition: left 0.5s ease;
 }
 
@@ -397,140 +311,336 @@
 }
 
 .project-link:hover {
-    background: linear-gradient(135deg, 
-        rgba(179, 179, 255, 0.4) 0%, 
-        rgba(179, 179, 255, 0.6) 100%);
-    transform: translateY(-3px);
-    box-shadow: 
-        0 8px 25px rgba(179, 179, 255, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.2);
-    border-color: rgba(179, 179, 255, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.6);
+    background: linear-gradient(135deg, #5855f7 0%, #9333ea 100%);
 }
 
-.project-link:active {
-    transform: translateY(-1px);
+/* Arrow and Light Effects */
+.timeline-arrow {
+    position: absolute;
+    left: 50%;
+    bottom: 260px;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    opacity: 0;
+    animation: arrowAppear 1s ease-out 1.5s forwards;
 }
 
-/* Add subtle glow effect around cards */
-.timeline-content::after {
+@keyframes arrowAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.timeline-arrow svg {
+    width: 100%;
+    height: 100%;
+    fill: url(#arrowGradient);
+    filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.6));
+}
+
+@keyframes subtleGlow {
+    0%, 100% {
+        opacity: 0.3;
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+.timeline-arrow::after {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, 
-        rgba(179, 179, 255, 0.1), 
-        rgba(255, 255, 255, 0.05), 
-        rgba(179, 179, 255, 0.1));
-    border-radius: 26px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(99, 102, 241, 0.15) 0%,
+        rgba(139, 92, 246, 0.08) 40%,
+        rgba(6, 182, 212, 0.02) 70%,
+        transparent 100%
+    );
+    filter: blur(40px);
     z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    animation: subtleGlow 6s ease-in-out infinite;
+    pointer-events: none;
 }
 
-.timeline-content:hover::after {
-    opacity: 1;
+/* GitHub Footer - Fixed Centering */
+.github-footer {
+    /* REMOVE these absolute positioning styles */
+     position: absolute;
+    left: 25%;
+    bottom: 10px;
+
+    width: 100%;
+    max-width: 600px;
+    padding: 0 2rem;
+    text-align: center;
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out 2s forwards;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.github-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(99, 102, 241, 0.6) 50%, 
+        transparent 100%
+    );
+}
+
+.github-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(99, 102, 241, 0.2);
+}
+
+.github-footer p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 2rem auto 0;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 900px) {
+    .projects-section {
+        padding: 8vh 1.5rem;
+    }
+    
+    .projects-title {
+        font-size: 2.8rem;
+        margin-bottom: 4rem;
+    }
+    
     .timeline-section {
-        padding-bottom: 380px;
+        padding-bottom: 420px;
     }
+    
     .timeline-line {
-        left: 2rem;
-        bottom: 220px; 
-        transform: translateX(0);
-    }
-    .timeline-arrow {
-        left: 2rem;
-        bottom: 180px;
+        left: 2.5rem;
+        bottom: 280px;
         transform: translateX(-50%);
     }
+    
+    .timeline-arrow {
+        left: 2.5rem;
+        bottom: 240px;
+        transform: translateX(-50%);
+    }
+    
+    /* Keep footer centered on mobile */
     .github-footer {
+        left: 50%;
+        bottom: 80px;
+        transform: translateX(-50%);
+        width: calc(100% - 3rem);
+        max-width: 500px;
+        padding: 0 1rem;
+    }
+    
+    .timeline-item, 
+    .timeline-item.left, 
+    .timeline-item.right {
+        width: 100%;
         left: 0;
-        bottom: 60px;
-        transform: translateX(0);
-        width: calc(100% - 2rem);
-        margin: 0 1rem;
+        align-items: flex-start;
+        padding-left: 5rem;
+        padding-right: 1rem;
+        margin-bottom: 4rem;
     }
-    .timeline-item, .timeline-item.left, .timeline-item.right { 
-        width: 100%; 
-        left: 0; 
-        align-items: flex-start; 
-        padding-left: 4rem; 
-        padding-right: 0; 
-        margin-bottom: 3rem; 
+    
+    .timeline-content {
+        max-width: 100%;
+        width: 100%;
+        min-width: auto;
     }
-    .timeline-content { 
-        max-width: 100%; 
-        width: 100%; 
-        min-width: 280px;
+    
+    .timeline-thread {
+        width: 40px;
+        left: 40px;
     }
-    .timeline-thread { 
-        width: 32px; 
-        left: 32px; 
+    
+    .timeline-item.left .timeline-thread,
+    .timeline-item.right .timeline-thread {
+        left: 40px;
+        right: auto;
     }
-    .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { 
-        left: 32px; 
-        right: auto; 
+    
+    .timeline-node {
+        left: 30px;
     }
-    .timeline-node { 
-        left: 23px; 
-    }
-    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { 
-        left: 23px; 
-        right: auto; 
+    
+    .timeline-item.left .timeline-node,
+    .timeline-item.right .timeline-node {
+        left: 30px;
+        right: auto;
     }
 }
 
 @media screen and (max-width: 600px) {
-    .projects-title { 
-        font-size: 2.5rem; 
-        margin-bottom: 4rem; 
+    .projects-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
-    .timeline-section { 
-        padding: 0 1rem 380px 1rem; 
+    
+    .timeline-section {
+        padding: 0 1rem 400px 1rem;
     }
-    .timeline-line { 
-        left: 1rem; 
+    
+    .timeline-line {
+        left: 1.5rem;
+        transform: translateX(-50%);
     }
-    .timeline-arrow { 
-        left: 1rem; 
+    
+    .timeline-arrow {
+        left: 1.5rem;
+        width: 32px;
+        height: 32px;
+        transform: translateX(-50%);
     }
-    .github-footer { 
-        width: calc(100% - 1rem); 
-        margin: 0 0.5rem; 
+    
+    /* Keep footer centered on small mobile */
+    .github-footer {
+        left: 50%;
+        bottom: 80px;
+        transform: translateX(-50%);
+        width: calc(100% - 2rem);
+        padding: 0 1rem;
     }
-    .timeline-item, .timeline-item.left, .timeline-item.right { 
-        padding-left: 2rem; 
+    
+    .timeline-item,
+    .timeline-item.left,
+    .timeline-item.right {
+        padding-left: 3rem;
+        margin-bottom: 3rem;
     }
-    .timeline-content { 
-        padding: 2rem 1.5rem; 
-        min-width: 250px;
+    
+    .timeline-content {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
     }
-    .timeline-thread, .timeline-item.left .timeline-thread, .timeline-item.right .timeline-thread { 
-        width: 16px; 
-        left: 16px; 
+    
+    .timeline-thread,
+    .timeline-item.left .timeline-thread,
+    .timeline-item.right .timeline-thread {
+        width: 24px;
+        left: 24px;
     }
-    .timeline-node { 
-        left: 7px; 
+    
+    .timeline-node {
+        left: 14px;
+        width: 16px;
+        height: 16px;
     }
-    .timeline-item.left .timeline-node, .timeline-item.right .timeline-node { 
-        left: 7px; 
-        right: auto; 
+    
+    .timeline-item.left .timeline-node,
+    .timeline-item.right .timeline-node {
+        left: 14px;
+        right: auto;
     }
-    .laptop-frame { 
-        max-width: 300px; 
+    
+    .laptop-frame {
+        max-width: 320px;
     }
-    .project-details h3 { 
-        font-size: 1.4rem; 
+    
+    .project-details h3 {
+        font-size: 1.5rem;
     }
-    .project-details p { 
-        font-size: 0.95rem; 
+    
+    .project-details p {
+        font-size: 0.95rem;
+        line-height: 1.6;
     }
-    .github-footer p { 
-        font-size: 1rem; 
+    
+    .github-footer p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .github-link {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .timeline-content {
+        padding: 1.5rem 1rem;
+    }
+    
+    .project-details {
+        text-align: center;
+    }
+    
+    .laptop-frame {
+        max-width: 280px;
+    }
+    
+    .project-details h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .project-details p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Ensure footer stays centered on smallest screens */
+    .github-footer {
+        left: 50%;
+        bottom: 80px;
+        width: calc(100% - 1rem);
+        padding: 0 0.5rem;
     }
 }
