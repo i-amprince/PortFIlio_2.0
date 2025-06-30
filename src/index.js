@@ -38,6 +38,11 @@ function Navbar() {
     setIsMenuOpen(false);
   };
 
+  // Close menu when clicking outside or on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
+
   return (
     <>
       <nav style={{
@@ -49,7 +54,7 @@ function Navbar() {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '1.2rem 2rem',
+        padding: '1rem 1.5rem',
         background: '#fff',
         boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.08)',
         borderRadius: '0 0 24px 24px',
@@ -57,9 +62,10 @@ function Navbar() {
         fontWeight: 600,
         fontSize: '1.1rem',
         transition: 'background 0.3s, box-shadow 0.3s',
+        height: '70px', // Fixed height for consistency
       }}>
         
-        {/* Logo/Brand (optional) */}
+        {/* Logo/Brand */}
         <div style={{ 
           fontSize: '1.3rem', 
           fontWeight: 700, 
@@ -72,11 +78,8 @@ function Navbar() {
         {/* Desktop Navigation */}
         <div style={{
           display: 'flex',
-          gap: 32,
+          gap: '2rem',
           alignItems: 'center',
-          '@media (max-width: 768px)': {
-            display: 'none'
-          }
         }} className="desktop-nav">
           {navLinks.map((link) => (
             <Link
@@ -91,6 +94,7 @@ function Navbar() {
                 borderRadius: 2,
                 background: location.pathname === link.path ? '#f5faff' : 'transparent',
                 boxShadow: location.pathname === link.path ? '0 2px 8px #007bff22' : 'none',
+                whiteSpace: 'nowrap',
               }}
             >
               {link.label}
@@ -153,63 +157,84 @@ function Navbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            style={{
-              position: 'fixed',
-              top: 0,
-              right: 0,
-              width: '100%',
-              height: '100vh',
-              background: 'rgba(255, 255, 255, 0.98)',
-              backdropFilter: 'blur(10px)',
-              zIndex: 1999,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              gap: '2rem',
-              fontSize: '1.5rem',
-              fontWeight: 600,
-            }}
-            className="mobile-menu"
-          >
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.path}
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: index * 0.1, duration: 0.3 }}
-              >
-                <Link
-                  to={link.path}
-                  onClick={closeMenu}
-                  style={{
-                    color: location.pathname === link.path ? '#007bff' : '#222',
-                    textDecoration: 'none',
-                    padding: '1rem 2rem',
-                    borderRadius: '12px',
-                    background: location.pathname === link.path ? '#f5faff' : 'transparent',
-                    border: location.pathname === link.path ? '2px solid #007bff' : '2px solid transparent',
-                    transition: 'all 0.2s',
-                    display: 'block',
-                    textAlign: 'center',
-                    minWidth: '200px',
-                  }}
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '100vh',
+                background: 'rgba(0, 0, 0, 0.5)',
+                zIndex: 1998,
+              }}
+              onClick={closeMenu}
+            />
+            
+            {/* Menu */}
+            <motion.div
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              style={{
+                position: 'fixed',
+                top: 0,
+                right: 0,
+                width: '100%',
+                height: '100vh',
+                background: 'rgba(255, 255, 255, 0.98)',
+                backdropFilter: 'blur(10px)',
+                zIndex: 1999,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: '2rem',
+                fontSize: '1.5rem',
+                fontWeight: 600,
+              }}
+              className="mobile-menu"
+            >
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.path}
+                  initial={{ y: 50, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: index * 0.1, duration: 0.3 }}
                 >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-          </motion.div>
+                  <Link
+                    to={link.path}
+                    onClick={closeMenu}
+                    style={{
+                      color: location.pathname === link.path ? '#007bff' : '#222',
+                      textDecoration: 'none',
+                      padding: '1rem 2rem',
+                      borderRadius: '12px',
+                      background: location.pathname === link.path ? '#f5faff' : 'transparent',
+                      border: location.pathname === link.path ? '2px solid #007bff' : '2px solid transparent',
+                      transition: 'all 0.2s',
+                      display: 'block',
+                      textAlign: 'center',
+                      minWidth: '200px',
+                    }}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
 
-      {/* CSS for responsive behavior */}
-      <style jsx>{`
+      {/* Global CSS for responsive behavior and About component fixes */}
+      <style jsx global>{`
         @media (max-width: 768px) {
           .desktop-nav {
             display: none !important;
@@ -217,12 +242,91 @@ function Navbar() {
           .mobile-menu-btn {
             display: flex !important;
           }
+          
+          /* Fix About component for mobile */
+          .about-container {
+            padding: 1rem 0.75rem 2rem 0.75rem !important;
+            height: auto !important;
+            min-height: calc(100vh - 70px) !important;
+            margin-top: 0 !important;
+          }
+          
+          .about-card {
+            padding: 1.5rem !important;
+            margin-top: 0 !important;
+          }
+          
+          .about-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .about-description {
+            font-size: 0.95rem !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .about-content-wrapper {
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+          }
+          
+          .working-illustration {
+            max-width: 280px !important;
+            height: auto !important;
+          }
+          
+          .mern-logos-row {
+            gap: 1rem !important;
+            padding: 0.75rem !important;
+          }
+          
+          .mern-logo {
+            height: 2.5rem !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .about-container {
+            padding: 0.5rem 0.5rem 1.5rem 0.5rem !important;
+          }
+          
+          .about-card {
+            padding: 1rem !important;
+          }
+          
+          .about-title {
+            font-size: 1.5rem !important;
+          }
+          
+          .about-description {
+            font-size: 0.9rem !important;
+          }
+          
+          .working-illustration {
+            max-width: 250px !important;
+          }
+          
+          .mern-logo {
+            height: 2rem !important;
+          }
         }
         
         @media (min-width: 769px) {
           .mobile-menu-btn {
             display: none !important;
           }
+          
+          /* Ensure About component has proper spacing on desktop */
+          .about-container {
+            padding: 2rem !important;
+          }
+        }
+        
+        /* Fix navbar overlap with content */
+        .about-container {
+          position: relative;
+          z-index: 1;
         }
       `}</style>
     </>
@@ -233,8 +337,8 @@ function AnimatedRoutes() {
   const location = useLocation();
   return (
     <div style={{ 
-      marginTop: '90px',
-      minHeight: 'calc(100vh - 90px)',
+      marginTop: '70px', // Reduced from 90px to match navbar height
+      minHeight: 'calc(100vh - 70px)',
       position: 'relative',
       zIndex: 1
     }}>
@@ -244,6 +348,7 @@ function AnimatedRoutes() {
             <motion.div 
               key="home"
               {...fadeTransition}
+              style={{ marginTop: location.pathname === '/' ? '-70px' : '0' }} // Home page can overlap navbar
             >
               <App />
             </motion.div>
