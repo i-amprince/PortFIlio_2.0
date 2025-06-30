@@ -1,14 +1,16 @@
 .contact-container {
   position: relative;
-  padding: 8vh 5vw;
+  padding: 8vh 5vw 4vh 5vw; /* Added bottom padding */
   color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   z-index: 10;
-  height: 100vh;
+  min-height: calc(100vh - 70px); /* Changed from height to min-height and account for navbar */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 0; /* Ensure no negative margin interferes */
+  padding-top: 4rem; /* Extra padding to account for fixed navbar */
 }
 
 .contact-heading {
@@ -238,20 +240,25 @@
   transform: translateY(-1px);
 }
 
-/* Responsive Design */
+/* Responsive Design - Tablet */
 @media (max-width: 768px) {
   .contact-container {
-    padding: 5vh 3vw;
+    padding: 2rem 3vw 3rem 3vw; /* Reduced top padding, added bottom */
+    padding-top: 2rem; /* Less aggressive top padding */
+    min-height: auto; /* Allow natural height */
+    justify-content: flex-start; /* Align to top instead of center */
   }
   
   .contact-heading {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    margin-top: 1rem; /* Add top margin */
   }
   
   .contact-content {
     flex-direction: column;
     gap: 2rem;
+    margin-bottom: 2rem; /* Add bottom margin */
   }
   
   .contact-info,
@@ -263,26 +270,98 @@
   .contact-info h2 {
     font-size: 2rem;
   }
+  
+  .contact-info p {
+    font-size: 1.1rem;
+  }
+  
+  .info-item {
+    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+  }
 }
 
+/* Responsive Design - Mobile */
 @media (max-width: 480px) {
+  .contact-container {
+    padding: 1rem 1rem 2rem 1rem; /* More conservative padding */
+    padding-top: 1.5rem; /* Account for navbar without being excessive */
+    min-height: auto;
+  }
+  
   .contact-heading {
     font-size: 2rem;
     letter-spacing: 1px;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .contact-content {
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
   }
   
   .contact-info,
   .contact-form {
     padding: 1.5rem;
     border-radius: 20px;
+    min-width: auto;
   }
   
   .contact-info h2 {
     font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-item {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .info-item strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    margin-right: 0;
   }
   
   .contact-form input,
   .contact-form textarea {
     padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .contact-form button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .contact-form textarea {
+    min-height: 100px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .contact-container {
+    padding: 0.8rem 0.8rem 1.5rem 0.8rem;
+  }
+  
+  .contact-heading {
+    font-size: 1.8rem;
+  }
+  
+  .contact-info,
+  .contact-form {
+    padding: 1.2rem;
+  }
+  
+  .contact-info h2 {
+    font-size: 1.6rem;
   }
 }

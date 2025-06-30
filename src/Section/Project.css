@@ -379,25 +379,23 @@
     pointer-events: none;
 }
 
-/* GitHub Footer - Fixed Centering */
+/* GitHub Footer - Fixed Positioning for All Devices */
 .github-footer {
-    /* REMOVE these absolute positioning styles */
-     position: absolute;
-    left: 25%;
-    bottom: 10px;
-
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 40px;
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
     padding: 0 2rem;
     text-align: center;
     z-index: 2;
     color: rgba(255, 255, 255, 0.9);
     opacity: 0;
     animation: fadeInUp 1s ease-out 2s forwards;
-    margin-left: auto;
-    margin-right: auto;
+    box-sizing: border-box;
 }
-
 
 .github-link {
     display: inline-flex;
@@ -478,14 +476,28 @@
         transform: translateX(-50%);
     }
     
-    /* Keep footer centered on mobile */
+    /* GitHub Footer - Tablet */
     .github-footer {
-        left: 50%;
-        bottom: 80px;
-        transform: translateX(-50%);
-        width: calc(100% - 3rem);
+        left: 0;
+        right: 0;
+        bottom: 60px;
+        width: 100%;
         max-width: 500px;
-        padding: 0 1rem;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        box-sizing: border-box;
+    }
+    
+    .github-link {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+        gap: 0.6rem;
+    }
+    
+    .github-footer p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin: 1.5rem auto 0;
     }
     
     .timeline-item, 
@@ -549,13 +561,35 @@
         transform: translateX(-50%);
     }
     
-    /* Keep footer centered on small mobile */
+    /* GitHub Footer - Mobile */
     .github-footer {
-        left: 50%;
-        bottom: 80px;
-        transform: translateX(-50%);
-        width: calc(100% - 2rem);
+        left: 0;
+        right: 0;
+        bottom: 50px;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
         padding: 0 1rem;
+        box-sizing: border-box;
+    }
+    
+    .github-link {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .github-link svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .github-footer p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 1.25rem auto 0;
     }
     
     .timeline-item,
@@ -601,16 +635,6 @@
         font-size: 0.95rem;
         line-height: 1.6;
     }
-    
-    .github-footer p {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-    
-    .github-link {
-        padding: 0.875rem 2rem;
-        font-size: 1rem;
-    }
 }
 
 @media screen and (max-width: 480px) {
@@ -636,11 +660,67 @@
         margin-bottom: 1.5rem;
     }
     
-    /* Ensure footer stays centered on smallest screens */
+    /* GitHub Footer - Small Mobile */
     .github-footer {
-        left: 50%;
-        bottom: 80px;
-        width: calc(100% - 1rem);
+        left: 0;
+        right: 0;
+        bottom: 40px;
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
         padding: 0 0.5rem;
+        box-sizing: border-box;
+    }
+    
+    .github-link {
+        padding: 0.65rem 1.25rem;
+        font-size: 0.9rem;
+        gap: 0.4rem;
+    }
+    
+    .github-link span {
+        font-size: 0.85rem;
+    }
+    
+    .github-link svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .github-footer p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin: 1rem auto 0;
+        padding: 0 0.5rem;
+    }
+}
+
+/* Extra Small Mobile - iPhone SE and similar */
+@media screen and (max-width: 375px) {
+    .github-footer {
+        left: 0;
+        right: 0;
+        bottom: 30px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        padding: 0 0.25rem;
+        box-sizing: border-box;
+    }
+    
+    .github-link {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        min-height: 44px; /* iOS touch target */
+    }
+    
+    .github-link span {
+        font-size: 0.8rem;
+    }
+    
+    .github-footer p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin: 0.75rem auto 0;
     }
 }
