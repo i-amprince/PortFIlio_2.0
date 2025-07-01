@@ -8,7 +8,7 @@ const educationData = [
     institution: "Indian Institute of Information Technology Guwahati",
     duration: "2023 – 2027",
     status: "Ongoing",
-    gpa: "7.7 CPI",
+    gpa: "7.8 CPI",
     details: "Focusing on full-stack development, data structures & algorithms, and hands-on project work with comprehensive understanding of modern software engineering practices.",
     highlights: ["Full-Stack Development", "Data Structures & Algorithms", "Software Engineering", "Project Management"],
     level: "undergraduate",
@@ -400,7 +400,7 @@ const Education = () => {
                 color: '#2c3e50',
                 textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
                 lineHeight: 1
-              }}>7.7</span>
+              }}>7.8</span>
               <span className="stat-label" style={{
                 fontSize: '1.1rem',
                 color: '#5a6c7d',
