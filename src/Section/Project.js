@@ -14,11 +14,11 @@ import IMG7 from '../Images/ProjectImages/Project7.png';
 
 const projects = [
     {
-        title: 'Personal Portfolio',
-        description: 'A visually dynamic React-based portfolio website featuring animated backgrounds, interactive sections, and a comprehensive showcase of my development skills and project portfolio.',
+        title: 'Movie&BAE',
+        description: 'An interactive and real-time booking platform designed for effortless browsing and instant reservations, ensuring a smooth and engaging user experience from selection to confirmation.',
         image: IMG7,
-        link: 'https://github.com/i-amprince/PortFIlio_2.0',
-        tech: ['React', 'CSS3', 'JavaScript']
+        link: 'https://github.com/i-amprince/Movie-Bae',
+        tech: ['MERN', 'Socket.io', 'Nodemailer']
     },
     {
         title: 'Cadence Code',
