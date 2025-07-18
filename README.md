@@ -2,7 +2,7 @@
 
 A visually dynamic, interactive React-based portfolio website featuring animated backgrounds, smooth transitions, and a showcase of skills, education, and projects.
 
-![App Screenshot](src/Images/ProjectImages/Project7.png)
+![App Screenshot](src/Images/ProjectImages/Project0.png)
 
 ## Features
 - Animated backgrounds (day, night, evening, morning)
